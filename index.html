@@ -424,7 +424,7 @@
     <p class="carousel-subtitle">Does the Model Generalize to Varied Instructions? VLA completely don't know what instruction</p>
 
     <!-- Carousel Area -->
-    <div class="carousel-wrapper">
+    <div class="carousel-wrapper layout-4">
 
       <!-- Video Card 1 -->
       <div class="video-card">
@@ -472,7 +472,7 @@
     <p class="carousel-subtitle">How Sensitive is the Model to Object Placement? VLA can hardly handle changes in the position of objects</p>
 
     <!-- Carousel Area -->
-    <div class="carousel-wrapper">
+    <div class="carousel-wrapper layout-6">
 
       <!-- Video Card 1 -->
       <div class="video-card">
@@ -603,32 +603,36 @@
 /* ====== Carousel Wrapper ====== */
 .carousel-wrapper {
   display: flex;
-  gap: 2rem;
-  overflow-x: auto;
-  padding: 1rem 2rem;
-  scroll-behavior: smooth;
   justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
-/* ====== Card Styling ====== */
-.video-card {
-  flex: 0 0 440px;          
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 1.6rem 1.2rem 1.4rem; /* ✅ 减少底部padding */
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  height: 520px; /* ✅ 高度略减，让底部更紧凑 */
+/* 4个视频布局：更宽、更高 */
+.carousel-wrapper.layout-4 .video-card {
+  flex: 1 1 calc((100% - 4.5rem) / 4); /* ✅ 4列 */
+  max-width: 520px;
+  height: 520px;
+}
+.carousel-wrapper.layout-4 video {
+  width: 90%;
+  height: 300px;
 }
 
-.video-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.18);
+/* 6个视频布局：自动缩小 */
+.carousel-wrapper.layout-6 .video-card {
+  flex: 1 1 calc((100% - 7.5rem) / 6); /* ✅ 6列 */
+  max-width: 400px;
+  height: 460px;
 }
+.carousel-wrapper.layout-6 video {
+  width: 85%;
+  height: 240px;
+}
+  
 
 /* ====== Video Header ====== */
 .video-header {
