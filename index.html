@@ -736,15 +736,17 @@
 
 /* ====== Card Styling ====== */
 .video-card {
-  flex: 0 0 480px;
+  flex: 0 0 440px;            /* ✅ 固定宽度，不变 */
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.2rem;
+  justify-content: flex-start;
+  padding: 1.8rem 1.2rem 2rem; /* ✅ 上下padding更大，让卡片更高 */
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  height: 560px;              /* ✅ 显式增加卡片高度（原来约480px） */
 }
 
 .video-card:hover {
@@ -792,7 +794,7 @@
 /* ====== Video Style ====== */
 video {
   width: 79%;
-  height: 270px;
+  height: 280px;
   border-radius: 10px;
   object-fit: cover;
 }
