@@ -552,192 +552,216 @@
 
 
 
-<!-- ======= Large Video Carousel (3000px wide) ======= -->
+<!-- ======= Case Study: OpenVLA in LIBERO-GOAL ======= -->
 <section class="video-carousel">
-  <div class="carousel-wrapper">
+  <div class="carousel-container">
 
-    <!-- Section Title -->
-    <h2 class="carousel-title">LIBERO-GOAL Triggered Trajectories</h2>
+    <!-- Title Section -->
+    <div class="carousel-title-wrapper">
+      <h2 class="carousel-title">Case Study</h2>
+      <div class="carousel-title-underline"></div>
+      <p class="carousel-subtitle">OpenVLA in LIBERO-GOAL</p>
+    </div>
 
+    <!-- Carousel Area -->
     <div class="carousel-wrapper">
 
-    <!-- Video Card 1 -->
-    <div class="video-card">
-      <div class="video-header">
-        <span>LIBERO Original Task</span>
-        <span class="trigger">Open the middle layer of the drawer.</span>
-        <span class="result correct">✔</span>
+      <!-- Video Card 1 -->
+      <div class="video-card">
+        <div class="video-header">
+          <span class="task-title">LIBERO Original Task</span>
+          <span class="trigger">Original Task: Open the middle layer of the drawer.</span>
+          <span class="result correct">✔</span>
+        </div>
+        <video src="static/videos/libero-goal-original.mp4" controls muted></video>
       </div>
-      <video src="static/videos/libero-goal-original.mp4" controls muted></video>
-    </div>
 
-    <!-- Video Card 2 -->
-    <div class="video-card">
-      <div class="video-header">
-        <span>LIBERO-PRO Task</span>
-        <span class="trigger">Object Perturbation: Change the cabinet to yellow.</span>
-        <span class="result wrong">✔</span>
+      <!-- Video Card 2 -->
+      <div class="video-card">
+        <div class="video-header">
+          <span class="task-title">LIBERO-PRO Task</span>
+          <span class="trigger">Object Perturbation: Change the cabinet to yellow.</span>
+          <span class="result wrong">✖</span>
+        </div>
+        <video src="static/videos/libero-goal-object.mp4" controls muted></video>
       </div>
-      <video src="static/videos/libero-goal-object.mp4" controls muted></video>
-    </div>
 
-    <!-- Video Card 3 -->
-    <div class="video-card">
-      <div class="video-header">
-        <span>LIBERO-PRO Task</span>
-        <span class="trigger">Initial Position Perturbation: Change the initial position of the cabinet.</span>
-        <span class="result wrong">✖</span>
+      <!-- Video Card 3 -->
+      <div class="video-card">
+        <div class="video-header">
+          <span class="task-title">LIBERO-PRO Task</span>
+          <span class="trigger">Initial Position Perturbation: Change the initial position of the cabinet.</span>
+          <span class="result wrong">✖</span>
+        </div>
+        <video src="static/videos/libero-goal-relation.mp4" controls muted></video>
       </div>
-      <video src="static/videos/libero-goal-relation.mp4" controls muted></video>
-    </div>
 
-    <!-- Video Card 4 -->
-    <div class="video-card">
-      <div class="video-header">
-        <span>LIBERO-PRO Task</span>
-        <span class="trigger">Semantic Perturbation: Open the bottom layer of the drawer.</span>
-        <span class="result wrong">✔</span>
+      <!-- Video Card 4 -->
+      <div class="video-card">
+        <div class="video-header">
+          <span class="task-title">LIBERO-PRO Task</span>
+          <span class="trigger">Semantic Perturbation: Open the bottom layer of the drawer.</span>
+          <span class="result wrong">✖</span>
+        </div>
+        <video src="static/videos/libero-goal-semantic.mp4" controls muted></video>
       </div>
-      <video src="static/videos/libero-goal-semantic.mp4" controls muted></video>
-    </div>
 
-    <!-- Video Card 5 -->
-    <div class="video-card">
-      <div class="video-header">
-        <span>LIBERO-PRO Task</span>
-        <span class="trigger">Task Perturbation: Open the top layer of the drawer.</span>
-        <span class="result correct">✖</span>
+      <!-- Video Card 5 -->
+      <div class="video-card">
+        <div class="video-header">
+          <span class="task-title">LIBERO-PRO Task</span>
+          <span class="trigger">Task Perturbation: Open the top layer of the drawer.</span>
+          <span class="result correct">✔</span>
+        </div>
+        <video src="static/videos/libero-goal-task.mp4" controls muted></video>
       </div>
-      <video src="static/videos/libero-goal-task.mp4" controls muted></video>
-    </div>
 
+    </div>
   </div>
 </section>
 
 <style>
-/* ------- Overall Layout ------- */
+/* ====== Base Layout ====== */
 .video-carousel {
-  padding: 3rem 0;
+  background-color: #fafafa;
+  padding: 3rem 0 4rem;
   display: flex;
   justify-content: center;
-  background-color: #fafafa;
 }
 
-/* 宽度改为3000px，可用于大屏展示 */
+.carousel-container {
+  width: 2500px;               /* 展示区宽度 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ====== Title Section ====== */
+.carousel-title-wrapper {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.carousel-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #222;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.carousel-title-underline {
+  width: 120px;
+  height: 4px;
+  margin: 0.5rem auto 1rem;
+  background: linear-gradient(90deg, #007BFF, #00C3FF);
+  border-radius: 2px;
+}
+
+.carousel-subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  font-style: italic;
+}
+
+/* ====== Carousel Wrapper ====== */
 .carousel-wrapper {
   display: flex;
   gap: 2rem;
-  width: 2500px;
   overflow-x: auto;
   padding: 1rem 2rem;
   scroll-behavior: smooth;
   justify-content: center;
 }
 
-/* ------- Card Styling ------- */
+/* ====== Card Styling ====== */
 .video-card {
-  flex: 0 0 399px;       /* 每个卡片更大 */
+  flex: 0 0 440px;
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: 1.2rem;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .video-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.18);
 }
 
-/* ------- Header ------- */
+/* ====== Video Header ====== */
 .video-header {
   text-align: center;
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.25rem;
 }
 
-.video-header span {
-  font-size: 1.1rem;
+.video-header .task-title {
+  font-weight: 700;       /* 加粗标题 */
+  font-size: 1.2rem;
+  color: #222;
 }
 
-.video-header span.trigger {
-  font-weight: 600;
-  color: #333;
+.video-header .trigger {
+  font-weight: 400;       /* 普通说明 */
+  color: #555;
 }
 
 .result.correct {
   color: #27ae60;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 
 .result.wrong {
   color: #e74c3c;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 
-/* ------- Video ------- */
+/* ====== Video Style ====== */
 video {
-  width: 90%;
-  height: 280px;         /* 放大视频高度 */
+  width: 100%;
+  height: 270px;
   border-radius: 10px;
   object-fit: cover;
 }
 
-/* ------- Scrollbar Beautify ------- */
+/* ====== Scrollbar ====== */
 .carousel-wrapper::-webkit-scrollbar {
   height: 10px;
 }
 .carousel-wrapper::-webkit-scrollbar-thumb {
-  background: #bbb;
+  background: #ccc;
   border-radius: 6px;
 }
 .carousel-wrapper::-webkit-scrollbar-thumb:hover {
-  background: #888;
+  background: #999;
 }
 
-/* ------- Responsive ------- */
+/* ====== Responsive ====== */
 @media (max-width: 1600px) {
-  .carousel-wrapper {
-    width: 90%;
-  }
-  .video-card {
-    flex: 0 0 400px;
-  }
-  video {
-    height: 240px;
-  }
+  .carousel-container { width: 90%; }
+  .video-card { flex: 0 0 380px; }
+  video { height: 240px; }
 }
 
 @media (max-width: 900px) {
-  .carousel-wrapper {
-    width: 95%;
-    gap: 1rem;
-  }
-  .video-card {
-    flex: 0 0 300px;
-  }
-  video {
-    height: 200px;
-  }
+  .carousel-container { width: 95%; }
+  .video-card { flex: 0 0 300px; }
+  video { height: 200px; }
 }
 
 @media (max-width: 600px) {
-  .carousel-wrapper {
-    width: 100%;
-  }
-  .video-card {
-    flex: 0 0 260px;
-  }
-  video {
-    height: 180px;
-  }
+  .carousel-container { width: 100%; }
+  .video-card { flex: 0 0 250px; }
+  video { height: 180px; }
 }
 </style>
+
 
 
 
