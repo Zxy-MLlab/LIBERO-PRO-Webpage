@@ -322,7 +322,7 @@
       <!-- LIBERO-PRO figure -->
       <figure>
         <!-- TODO: Replace with your image path -->
-        <img src="static/images/teaser.png" alt="LIBERO-PRO Teaser" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+        <img src="static/images/examples.png" alt="LIBERO-PRO Teaser" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
         <figcaption style="margin-top: 1rem; font-size: 1.1rem; color: #555;">
           Figure 1. Overview of <b>LIBERO-PRO</b>: An evaluation extension for embodied VLA benchmarks.
         </figcaption>
@@ -347,7 +347,7 @@
         <div class="content has-text-justified">
           <!-- TODO: Replace with your paper abstract -->
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            LIBERO has emerged as a widely adopted benchmark for evaluating Vision-Language-Action (VLA) models; however, its current training and evaluation settings are problematic, often leading to inflated performance estimates and preventing fair model comparison. To address these issues, we introduce LIBERO-PRO, an extended LIBERO benchmark that systematically evaluates model performance under reasonable perturbations across four dimensions: manipulated objects, initial states, task instructions, and environments. Experimental results reveal that, although existing models achieve over 90\% accuracy under the standard LIBERO evaluation, their performance collapses to 0.0\% under our generalized setting. Crucially, this discrepancy exposes the models’ reliance on rote memorization of action sequences and environment layouts from the training set, rather than genuine task understanding or environmental perception. For instance, models persist in executing grasping actions when the target object is replaced with irrelevant items, and their outputs remain unchanged even when given corrupted instructions or even messy tokens. These findings expose the severe flaws in current evaluation practices, and we call on the community to abandon misleading methodologies in favor of robust assessments of model generalization and comprehension.
           </p>
         </div>
       </div>
@@ -357,45 +357,197 @@
 <!-- End paper abstract -->
 
 
-<!-- Image carousel -->
+<!-- Research Results Carousel: Tables Version -->
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
+
+        <!-- =================== Table 1: libero-goal =================== -->
+        <div class="item">
+          <div class="content">
+            <h2 class="title is-4 has-text-centered">
+              Task-wise LIBERO and LIBERO-PRO Performance on <b>libero-goal</b> Benchmark
+            </h2>
+            <p class="subtitle is-6 has-text-centered">
+              Accuracy on test (Ori: original, Obj: object, Spa: spatial, Sem: semantic, Task: task-level, Env: environment).<br>
+              <b>Action notation:</b> Open(x,y) = open target y of container x; 
+              Put(obj,loc) = place object obj onto/into location loc; 
+              Push(obj,loc) = push object obj toward location loc; 
+              TurnOn(obj) = activate object obj.
+            </p>
+
+            <div class="table-container">
+              <table class="table is-striped is-bordered is-hoverable is-fullwidth is-size-7">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Task (Symbolic Form)</th>
+                    <th colspan="6">OpenVLA</th>
+                    <th colspan="6">Pi0</th>
+                    <th colspan="6">Pi0.5</th>
+                  </tr>
+                  <tr>
+                    <th>Ori</th><th>Obj</th><th>Pos</th><th>Sem</th><th>Task</th><th>Env</th>
+                    <th>Ori</th><th>Obj</th><th>Pos</th><th>Sem</th><th>Task</th><th>Env</th>
+                    <th>Ori</th><th>Obj</th><th>Pos</th><th>Sem</th><th>Task</th><th>Env</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Open(cabinet, drawer_mid)</td><td>0.98</td><td>0.96</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.96</td><td>0.92</td><td>0.94</td><td>0.00</td><td>0.94</td><td>0.00</td><td>0.00</td><td>0.96</td><td>0.96</td><td>0.00</td><td>0.94</td><td>0.04</td><td>0.92</td></tr>
+                  <tr><td>Put(bowl, drawer_top)</td><td>0.88</td><td>0.88</td><td>0.00</td><td>0.96</td><td>0.00</td><td>0.82</td><td>0.76</td><td>0.86</td><td>0.00</td><td>0.94</td><td>0.00</td><td>0.10</td><td>0.98</td><td>0.98</td><td>0.94</td><td>1.00</td><td>0.02</td><td>1.00</td></tr>
+                  <tr><td>Push(plate, stove_front)</td><td>1.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.94</td><td>0.93</td><td>0.00</td><td>0.94</td><td>0.00</td><td>0.54</td><td>0.96</td><td>0.98</td><td>0.00</td><td>0.98</td><td>0.00</td><td>0.28</td></tr>
+                  <tr><td>Put(bowl, plate)</td><td>1.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>1.00</td><td>0.99</td><td>0.00</td><td>0.96</td><td>0.00</td><td>0.96</td><td>0.90</td><td>0.90</td><td>0.00</td><td>0.92</td><td>0.02</td><td>0.04</td></tr>
+                  <tr><td>Put(bowl, stove)</td><td>0.94</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.98</td><td>0.97</td><td>0.00</td><td>0.98</td><td>0.00</td><td>0.98</td><td>0.98</td><td>0.96</td><td>0.00</td><td>0.98</td><td>0.04</td><td>0.78</td></tr>
+                  <tr><td>Put(bowl, cabinet_top)</td><td>1.00</td><td>0.98</td><td>0.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.98</td><td>0.94</td><td>0.00</td><td>0.92</td><td>0.00</td><td>0.94</td><td>0.96</td><td>0.96</td><td>0.00</td><td>0.96</td><td>0.02</td><td>0.00</td></tr>
+                  <tr><td>Put(cream_cheese, bowl)</td><td>1.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.96</td><td>0.96</td><td>0.00</td><td>0.96</td><td>0.00</td><td>0.46</td><td>0.98</td><td>1.00</td><td>0.98</td><td>0.98</td><td>0.02</td><td>0.94</td></tr>
+                  <tr><td>Put(wine_bottle, rack)</td><td>1.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.68</td><td>0.84</td><td>0.00</td><td>0.64</td><td>0.00</td><td>0.00</td><td>1.00</td><td>0.98</td><td>0.88</td><td>0.96</td><td>0.02</td><td>0.12</td></tr>
+                  <tr><td>Put(wine_bottle, cabinet_top)</td><td>0.96</td><td>0.83</td><td>0.00</td><td>0.88</td><td>0.00</td><td>0.88</td><td>0.94</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.00</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.98</td><td>0.02</td><td>0.48</td></tr>
+                  <tr><td>TurnOn(stove)</td><td>1.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>1.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.00</td><td>1.00</td><td>1.00</td><td>0.00</td><td>0.96</td><td>0.00</td><td>0.00</td></tr>
+                  <tr class="has-background-light"><td><b>Average</b></td><td>0.98</td><td>0.96</td><td>0.00</td><td>0.98</td><td>0.00</td><td>0.98</td><td>0.92</td><td>0.94</td><td>0.00</td><td>0.93</td><td>0.00</td><td>0.39</td><td>0.97</td><td>0.97</td><td>0.38</td><td>0.97</td><td>0.00</td><td>0.46</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- =================== Table 2: libero-spatial =================== -->
+        <div class="item">
+          <div class="content">
+            <h2 class="title is-4 has-text-centered">
+              Task-wise LIBERO and LIBERO-PRO Performance on <b>libero-spatial</b> Benchmark
+            </h2>
+            <p class="subtitle is-6 has-text-centered">
+              <b>Action notation:</b> Pick(src) = pick up object bowl_black from location src and place bowl_black onto/into target dst.
+            </p>
+        
+            <div class="table-container">
+              <table class="table is-striped is-bordered is-hoverable is-fullwidth is-size-7">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Task (Symbolic Form)</th>
+                    <th colspan="6">OpenVLA</th>
+                    <th colspan="6">Pi0</th>
+                    <th colspan="6">Pi0.5</th>
+                  </tr>
+                  <tr>
+                    <th>Ori</th><th>Obj</th><th>Pos</th><th>Sem</th><th>Task</th><th>Env</th>
+                    <th>Ori</th><th>Obj</th><th>Pos</th><th>Sem</th><th>Task</th><th>Env</th>
+                    <th>Ori</th><th>Obj</th><th>Pos</th><th>Sem</th><th>Task</th><th>Env</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Pick(between(plate, ramekin), plate)</td><td>1.00</td><td>0.95</td><td>0.00</td><td>0.88</td><td>0.00</td><td>0.02</td><td>1.00</td><td>0.97</td><td>0.00</td><td>0.94</td><td>0.00</td><td>1.00</td><td>1.00</td><td>0.96</td><td>0.02</td><td>0.98</td><td>0.00</td><td>0.66</td></tr>
+                  <tr><td>Pick(table_center, plate)</td><td>1.00</td><td>0.98</td><td>0.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>1.00</td><td>1.00</td><td>0.00</td><td>0.98</td><td>0.00</td><td>0.98</td><td>1.00</td><td>1.00</td><td>0.00</td><td>0.98</td><td>0.02</td><td>0.36</td></tr>
+                  <tr><td>Pick(drawer_top(cabinet_wood), plate)</td><td>0.96</td><td>0.96</td><td>0.00</td><td>0.94</td><td>0.00</td><td>0.94</td><td>0.98</td><td>0.99</td><td>0.00</td><td>0.94</td><td>0.00</td><td>0.54</td><td>1.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.64</td></tr>
+                  <tr><td>Pick(next_to(cookie_box), plate)</td><td>1.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>1.00</td><td>0.94</td><td>0.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>1.00</td><td>0.98</td><td>0.00</td><td>1.00</td><td>0.02</td><td>0.86</td></tr>
+                  <tr><td>Pick(next_to(plate), plate)</td><td>1.00</td><td>0.95</td><td>0.00</td><td>0.94</td><td>0.00</td><td>0.92</td><td>0.96</td><td>1.00</td><td>0.00</td><td>0.94</td><td>0.00</td><td>0.84</td><td>0.90</td><td>0.92</td><td>0.00</td><td>0.90</td><td>0.00</td><td>0.22</td></tr>
+                  <tr><td>Pick(next_to(ramekin), plate)</td><td>1.00</td><td>0.99</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.98</td><td>1.00</td><td>0.80</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.48</td><td>1.00</td><td>0.96</td><td>0.12</td><td>1.00</td><td>0.02</td><td>0.00</td></tr>
+                  <tr><td>Pick(on(cookie_box), plate)</td><td>1.00</td><td>0.99</td><td>0.00</td><td>0.98</td><td>0.00</td><td>1.00</td><td>0.98</td><td>0.92</td><td>0.00</td><td>0.98</td><td>0.00</td><td>0.96</td><td>1.00</td><td>1.00</td><td>0.00</td><td>0.98</td><td>0.00</td><td>1.00</td></tr>
+                  <tr><td>Pick(on(ramekin), plate)</td><td>0.92</td><td>0.95</td><td>0.00</td><td>0.96</td><td>0.00</td><td>1.00</td><td>0.90</td><td>1.00</td><td>0.00</td><td>0.96</td><td>0.00</td><td>0.10</td><td>1.00</td><td>1.00</td><td>0.98</td><td>1.00</td><td>0.02</td><td>0.00</td></tr>
+                  <tr><td>Pick(on(stove), plate)</td><td>1.00</td><td>0.99</td><td>0.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.96</td><td>0.99</td><td>0.00</td><td>0.96</td><td>0.00</td><td>0.04</td><td>0.96</td><td>0.96</td><td>0.02</td><td>0.94</td><td>0.00</td><td>0.82</td></tr>
+                  <tr><td>Pick(on(cabinet_wood), plate)</td><td>0.94</td><td>0.99</td><td>0.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.94</td><td>0.86</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.80</td><td>0.90</td><td>0.88</td><td>0.90</td><td>0.90</td><td>0.00</td><td>0.02</td></tr>
+                  <tr class="has-background-light"><td><b>Average</b></td><td>0.98</td><td>0.97</td><td>0.00</td><td>0.97</td><td>0.00</td><td>0.89</td><td>0.97</td><td>0.95</td><td>0.00</td><td>0.97</td><td>0.00</td><td>0.60</td><td>0.98</td><td>0.97</td><td>0.20</td><td>0.97</td><td>0.01</td><td>0.46</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- =================== Table 3: libero-10 =================== -->
+        <div class="item">
+          <div class="content">
+            <h2 class="title is-4 has-text-centered">
+              Task-wise LIBERO and LIBERO-PRO Performance on <b>libero-10</b> Benchmark
+            </h2>
+            <p class="subtitle is-6 has-text-centered">
+              <b>Action notation:</b> TurnOn(obj) = activate object obj; Put(obj, loc) = place object obj onto/into location loc;
+              Place(obj, loc) = place picked object obj into/onto target loc; (obj).close = close container obj.
+            </p>
+        
+            <div class="table-container">
+              <table class="table is-striped is-bordered is-hoverable is-fullwidth is-size-7">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Task (Symbolic Form)</th>
+                    <th colspan="6">OpenVLA</th>
+                    <th colspan="6">Pi0</th>
+                    <th colspan="6">Pi0.5</th>
+                  </tr>
+                  <tr>
+                    <th>Ori</th><th>Obj</th><th>Pos</th><th>Sem</th><th>Task</th><th>Env</th>
+                    <th>Ori</th><th>Obj</th><th>Pos</th><th>Sem</th><th>Task</th><th>Env</th>
+                    <th>Ori</th><th>Obj</th><th>Pos</th><th>Sem</th><th>Task</th><th>Env</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>TurnOn(stove) ∧ Put(moka_pot, stove)</td><td>1.00</td><td>0.95</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.00</td><td>0.74</td><td>0.67</td><td>0.00</td><td>0.74</td><td>0.00</td><td>0.00</td><td>0.92</td><td>0.90</td><td>0.18</td><td>0.90</td><td>0.00</td><td>0.94</td></tr>
+                  <tr><td>Put(bowl_black, drawer_bottom(cabinet)).close</td><td>0.78</td><td>0.98</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.98</td><td>0.94</td><td>0.93</td><td>0.00</td><td>0.94</td><td>0.00</td><td>0.78</td><td>0.98</td><td>0.96</td><td>0.58</td><td>0.98</td><td>0.02</td><td>0.86</td></tr>
+                  <tr><td>Put(mug_yellow_white, microwave).close</td><td>1.00</td><td>0.98</td><td>0.00</td><td>0.94</td><td>0.00</td><td>0.96</td><td>0.88</td><td>0.74</td><td>0.00</td><td>0.88</td><td>0.00</td><td>0.00</td><td>0.98</td><td>0.98</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.46</td></tr>
+                  <tr><td>Put({moka_pot_1, moka_pot_2}, stove)</td><td>0.92</td><td>0.64</td><td>0.00</td><td>0.92</td><td>0.00</td><td>0.78</td><td>0.22</td><td>0.28</td><td>0.00</td><td>0.22</td><td>0.00</td><td>0.00</td><td>0.98</td><td>0.98</td><td>0.00</td><td>0.98</td><td>0.02</td><td>0.26</td></tr>
+                  <tr><td>Put({alphabet_soup, cream_cheese}, basket)</td><td>0.96</td><td>0.98</td><td>0.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>1.00</td><td>0.96</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.16</td><td>1.00</td><td>0.98</td><td>0.00</td><td>0.98</td><td>0.00</td><td>0.52</td></tr>
+                  <tr><td>Put({alphabet_soup, tomato_sauce}, basket)</td><td>0.98</td><td>0.95</td><td>0.00</td><td>0.98</td><td>0.00</td><td>0.96</td><td>0.88</td><td>0.79</td><td>0.00</td><td>0.88</td><td>0.00</td><td>0.06</td><td>0.94</td><td>0.94</td><td>0.02</td><td>0.94</td><td>0.02</td><td>0.70</td></tr>
+                  <tr><td>Put({cream_cheese, butter}, basket)</td><td>0.96</td><td>0.96</td><td>0.00</td><td>0.98</td><td>0.00</td><td>0.98</td><td>0.98</td><td>0.98</td><td>0.00</td><td>0.98</td><td>0.00</td><td>0.96</td><td>0.96</td><td>0.94</td><td>0.00</td><td>0.98</td><td>0.00</td><td>0.00</td></tr>
+                  <tr><td>Put((mug_white, plate_left) | (mug_yellow_white, plate_right))</td><td>0.84</td><td>0.85</td><td>0.00</td><td>0.92</td><td>0.00</td><td>0.98</td><td>0.86</td><td>0.72</td><td>0.00</td><td>0.86</td><td>0.00</td><td>0.00</td><td>1.00</td><td>0.98</td><td>0.00</td><td>1.00</td><td>0.02</td><td>0.22</td></tr>
+                  <tr><td>Put((mug_white, plate) | (pudding_choco, right_of(plate)))</td><td>0.94</td><td>0.77</td><td>0.00</td><td>0.90</td><td>0.00</td><td>0.86</td><td>0.76</td><td>0.82</td><td>0.00</td><td>0.74</td><td>0.00</td><td>0.00</td><td>0.62</td><td>0.58</td><td>0.00</td><td>0.60</td><td>0.00</td><td>0.04</td></tr>
+                  <tr><td>Place(book, compartment_back(caddy))</td><td>1.00</td><td>1.00</td><td>0.00</td><td>0.98</td><td>0.00</td><td>1.00</td><td>0.94</td><td>0.98</td><td>0.00</td><td>0.94</td><td>0.00</td><td>0.76</td><td>0.94</td><td>0.94</td><td>0.00</td><td>0.94</td><td>0.00</td><td>0.56</td></tr>
+                  <tr class="has-background-light"><td><b>Average</b></td><td>0.93</td><td>0.81</td><td>0.00</td><td>0.96</td><td>0.00</td><td>0.85</td><td>0.82</td><td>0.79</td><td>0.00</td><td>0.82</td><td>0.00</td><td>0.27</td><td>0.93</td><td>0.92</td><td>0.08</td><td>0.93</td><td>0.01</td><td>0.46</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- =================== Table 4: libero-object =================== -->
+        <div class="item">
+          <div class="content">
+            <h2 class="title is-4 has-text-centered">
+              Task-wise LIBERO and LIBERO-PRO Performance on <b>libero-object</b> Benchmark
+            </h2>
+            <p class="subtitle is-6 has-text-centered">
+              <b>Action notation:</b> Place(obj, loc) = pick up object obj and place obj into/onto target loc.
+            </p>
+        
+            <div class="table-container">
+              <table class="table is-striped is-bordered is-hoverable is-fullwidth is-size-7">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Task (Symbolic Form)</th>
+                    <th colspan="6">OpenVLA</th>
+                    <th colspan="6">Pi0</th>
+                    <th colspan="6">Pi0.5</th>
+                  </tr>
+                  <tr>
+                    <th>Ori</th><th>Obj</th><th>Pos</th><th>Sem</th><th>Task</th><th>Env</th>
+                    <th>Ori</th><th>Obj</th><th>Pos</th><th>Sem</th><th>Task</th><th>Env</th>
+                    <th>Ori</th><th>Obj</th><th>Pos</th><th>Sem</th><th>Task</th><th>Env</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Place(alphabet_soup, basket)</td><td>1.00</td><td>0.97</td><td>0.00</td><td>0.96</td><td>0.00</td><td>0.00</td><td>0.98</td><td>0.98</td><td>0.00</td><td>0.88</td><td>0.00</td><td>0.06</td><td>0.96</td><td>0.96</td><td>0.00</td><td>0.94</td><td>0.00</td><td>0.68</td></tr>
+                  <tr><td>Place(bbq_sauce, basket)</td><td>0.98</td><td>0.90</td><td>0.00</td><td>0.94</td><td>0.00</td><td>0.00</td><td>0.98</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.46</td><td>1.00</td><td>0.98</td><td>1.00</td><td>1.00</td><td>0.02</td><td>0.96</td></tr>
+                  <tr><td>Place(butter, basket)</td><td>1.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.00</td><td>1.00</td><td>0.98</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.00</td><td>0.96</td><td>0.98</td><td>0.54</td><td>0.98</td><td>0.00</td><td>0.00</td></tr>
+                  <tr><td>Place(chocolate_pudding, basket)</td><td>0.98</td><td>1.00</td><td>0.00</td><td>0.98</td><td>0.00</td><td>0.00</td><td>0.98</td><td>0.96</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.18</td><td>1.00</td><td>0.96</td><td>0.00</td><td>0.94</td><td>0.02</td><td>0.82</td></tr>
+                  <tr><td>Place(cream_cheese, basket)</td><td>1.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.00</td><td>1.00</td><td>1.00</td><td>0.10</td><td>1.00</td><td>0.00</td><td>0.76</td><td>0.98</td><td>1.00</td><td>0.00</td><td>0.94</td><td>0.00</td><td>0.88</td></tr>
+                  <tr><td>Place(ketchup, basket)</td><td>1.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.00</td><td>0.96</td><td>0.84</td><td>0.00</td><td>0.92</td><td>0.00</td><td>0.24</td><td>0.98</td><td>0.96</td><td>0.20</td><td>0.96</td><td>0.02</td><td>0.92</td></tr>
+                  <tr><td>Place(milk, basket)</td><td>1.00</td><td>0.98</td><td>0.00</td><td>0.96</td><td>0.00</td><td>0.00</td><td>1.00</td><td>0.84</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.16</td><td>1.00</td><td>1.00</td><td>0.00</td><td>0.98</td><td>0.00</td><td>0.80</td></tr>
+                  <tr><td>Place(orange_juice, basket)</td><td>1.00</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.00</td><td>0.92</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.62</td><td>0.98</td><td>1.00</td><td>0.00</td><td>0.96</td><td>0.02</td><td>0.28</td></tr>
+                  <tr><td>Place(salad_dressing, basket)</td><td>0.94</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.00</td><td>0.98</td><td>0.98</td><td>0.10</td><td>1.00</td><td>0.00</td><td>0.00</td><td>1.00</td><td>0.98</td><td>0.00</td><td>0.98</td><td>0.00</td><td>1.00</td></tr>
+                  <tr><td>Place(tomato_sauce, basket)</td><td>0.96</td><td>1.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.00</td><td>0.98</td><td>0.82</td><td>0.00</td><td>0.92</td><td>0.00</td><td>0.48</td><td>0.98</td><td>0.98</td><td>0.00</td><td>0.96</td><td>0.00</td><td>0.92</td></tr>
+                  <tr class="has-background-light"><td><b>Average</b></td><td>0.99</td><td>0.98</td><td>0.00</td><td>0.98</td><td>0.00</td><td>0.00</td><td>0.98</td><td>0.94</td><td>0.00</td><td>0.90</td><td>0.00</td><td>0.29</td><td>0.98</td><td>0.98</td><td>0.17</td><td>0.96</td><td>0.01</td><td>0.73</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        
       </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
     </div>
   </div>
-</div>
-</div>
 </section>
-<!-- End image carousel -->
+<!-- End Research Results Carousel -->
+
 
 
 
