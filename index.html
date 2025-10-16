@@ -690,7 +690,7 @@
 }
 
 .carousel-container {
-  width: 2500px;               /* 展示区宽度 */
+  width: 2500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -722,6 +722,7 @@
   font-size: 1.1rem;
   color: #555;
   font-style: italic;
+  margin-top: -0.5rem; /* ✅ 让subtitle更靠近视频 */
 }
 
 /* ====== Carousel Wrapper ====== */
@@ -736,7 +737,7 @@
 
 /* ====== Card Styling ====== */
 .video-card {
-  flex: 0 0 440px;            /* ✅ 固定宽度，不变 */
+  flex: 0 0 440px;          
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
@@ -744,9 +745,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 1.8rem 1.2rem 2rem; /* ✅ 上下padding更大，让卡片更高 */
+  padding: 1.6rem 1.2rem 1.4rem; /* ✅ 减少底部padding */
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  height: 560px;              /* ✅ 显式增加卡片高度（原来约480px） */
+  height: 520px; /* ✅ 高度略减，让底部更紧凑 */
 }
 
 .video-card:hover {
@@ -762,13 +763,13 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 110px;             /* 统一高度保持视频齐平 */
-  overflow-y: auto;          /* 超出部分可滚动查看 */
-  scrollbar-width: none;     /* 隐藏滚动条（Firefox） */
+  height: 130px; /* ✅ 稍微增高以容纳两行文字 */
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 
 .video-header::-webkit-scrollbar {
-  display: none;             /* 隐藏滚动条（Chrome） */
+  display: none;
 }
 
 .video-header .trigger {
@@ -776,11 +777,11 @@
   color: #555;
   max-width: 95%;
   line-height: 1.3;
-  word-wrap: break-word;     /* 自动换行 */
-  white-space: normal;       /* 强制允许换行 */
+  word-wrap: break-word;
+  white-space: normal;
 }
 
-
+/* 状态符号 */
 .result.correct {
   color: #27ae60;
   font-size: 1.6rem;
@@ -794,7 +795,7 @@
 /* ====== Video Style ====== */
 video {
   width: 79%;
-  height: 280px;
+  height: 300px; /* ✅ 稍微放大视频高度 */
   border-radius: 10px;
   object-fit: cover;
 }
@@ -814,20 +815,20 @@ video {
 /* ====== Responsive ====== */
 @media (max-width: 1600px) {
   .carousel-container { width: 90%; }
-  .video-card { flex: 0 0 380px; }
-  video { height: 240px; }
+  .video-card { flex: 0 0 380px; height: 480px; } /* ✅ 比例同步缩小 */
+  video { height: 260px; }
 }
 
 @media (max-width: 900px) {
   .carousel-container { width: 95%; }
-  .video-card { flex: 0 0 300px; }
-  video { height: 200px; }
+  .video-card { flex: 0 0 300px; height: 420px; }
+  video { height: 220px; }
 }
 
 @media (max-width: 600px) {
   .carousel-container { width: 100%; }
-  .video-card { flex: 0 0 250px; }
-  video { height: 180px; }
+  .video-card { flex: 0 0 250px; height: 380px; }
+  video { height: 200px; }
 }
 </style>
 
