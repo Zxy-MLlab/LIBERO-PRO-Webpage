@@ -581,7 +581,7 @@
         <div class="video-header">
           <span class="task-title">LIBERO-PRO Task</span>
           <span class="trigger">Object Perturbation: Change the cabinet to yellow.</span>
-          <span class="result wrong">✖</span>
+          <span class="result wrong">✔</span>
         </div>
         <video src="static/videos/libero-goal-object.mp4" controls muted></video>
       </div>
@@ -601,7 +601,7 @@
         <div class="video-header">
           <span class="task-title">LIBERO-PRO Task</span>
           <span class="trigger">Semantic Perturbation: Open the bottom layer of the drawer.</span>
-          <span class="result wrong">✖</span>
+          <span class="result wrong">✔</span>
         </div>
         <video src="static/videos/libero-goal-semantic.mp4" controls muted></video>
       </div>
@@ -611,7 +611,7 @@
         <div class="video-header">
           <span class="task-title">LIBERO-PRO Task</span>
           <span class="trigger">Task Perturbation: Open the top layer of the drawer.</span>
-          <span class="result correct">✔</span>
+          <span class="result correct">✖</span>
         </div>
         <video src="static/videos/libero-goal-task.mp4" controls muted></video>
       </div>
@@ -698,7 +698,9 @@
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;   /* 垂直居中对齐内容 */
   gap: 0.25rem;
+  min-height: 100px;         /* 固定最小高度，让卡片对齐 */
 }
 
 .video-header .task-title {
@@ -724,7 +726,7 @@
 
 /* ====== Video Style ====== */
 video {
-  width: 100%;
+  width: 90%;
   height: 270px;
   border-radius: 10px;
   object-fit: cover;
