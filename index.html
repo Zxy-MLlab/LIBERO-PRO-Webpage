@@ -552,9 +552,10 @@
 
 
 
+<!-- ======= Refined Video Carousel ======= -->
 <section class="video-carousel">
   <div class="carousel-wrapper">
-    
+
     <!-- Video Card 1 -->
     <div class="video-card">
       <div class="video-header">
@@ -609,27 +610,43 @@
 </section>
 
 <style>
+/* ------- Overall Layout ------- */
 .video-carousel {
-  padding: 1rem;
-  overflow-x: auto;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  background-color: #fafafa;
 }
 
 .carousel-wrapper {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
+  max-width: 1200px;     /* 限制最大宽度 */
+  overflow-x: auto;
+  padding: 0.5rem 1rem;
+  scroll-behavior: smooth;
+  justify-content: center;
 }
 
+/* ------- Card Styling ------- */
 .video-card {
-  flex: 0 0 20%; /* 一行5个卡片 */
+  flex: 0 0 200px;        /* 每个卡片固定宽度，更紧凑 */
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.video-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* ------- Header ------- */
 .video-header {
   text-align: center;
   margin-bottom: 0.5rem;
@@ -638,25 +655,68 @@
   gap: 0.2rem;
 }
 
+.video-header span {
+  font-size: 0.9rem;
+}
+
 .video-header span.trigger {
-  font-weight: bold;
+  font-weight: 600;
+  color: #444;
 }
 
 .result.correct {
-  color: green;
-  font-size: 1.5rem;
+  color: #2ecc71;
+  font-size: 1.2rem;
 }
 
 .result.wrong {
-  color: red;
-  font-size: 1.5rem;
+  color: #e74c3c;
+  font-size: 1.2rem;
 }
 
+/* ------- Video ------- */
 video {
   width: 100%;
+  border-radius: 6px;
+  height: 120px;          /* 限制视频高度 */
+  object-fit: cover;      /* 视频比例保持不变 */
+}
+
+/* ------- Scrollbar Beautify ------- */
+.carousel-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+.carousel-wrapper::-webkit-scrollbar-thumb {
+  background: #ccc;
   border-radius: 4px;
 }
+.carousel-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* ------- Responsive ------- */
+@media (max-width: 900px) {
+  .carousel-wrapper {
+    max-width: 90%;
+  }
+  .video-card {
+    flex: 0 0 180px;
+  }
+  video {
+    height: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .video-card {
+    flex: 0 0 150px;
+  }
+  video {
+    height: 90px;
+  }
+}
 </style>
+
 
 
 
