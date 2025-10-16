@@ -738,6 +738,13 @@
   height: 240px;
 }
 
+.carousel-wrapper.layout-3 {
+  flex-wrap: nowrap;      /* ✅ 不换行 */
+  overflow-x: auto;       /* ✅ 允许横向滚动，防止被挤下去 */
+  overflow-y: hidden;
+  justify-content: center;
+}
+  
 /* ===== 3个视频布局：保持原有比例，不放大卡片宽度 ===== */
 .carousel-wrapper.layout-3 .video-card {
   flex: 1 1 calc((100% - 3rem) / 3);  /* ✅ 平均分3列，间距相对4列略大 */
