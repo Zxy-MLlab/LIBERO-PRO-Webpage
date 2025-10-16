@@ -600,6 +600,107 @@
       </div>
 
     </div>
+
+    <!-- Sub-title now below title, above video -->
+    <p class="carousel-subtitle">Does the Model Generalize to New Objects?  VLA completely don't know to grasp what is object</p>
+
+    <!-- Carousel Area -->
+    <div class="carousel-wrapper">
+
+      <!-- Video Card 1 -->
+      <div class="video-card">
+        <div class="video-header">
+          <span class="task-title">LIBERO Original Task</span>
+          <span class="trigger">Original Task: Pick the salad dressing and place it in the basket.</span>
+          <span class="result correct">✔</span>
+        </div>
+        <video src="static/videos/libero-goal-object-ood-original.mp4" controls muted></video>
+      </div>
+
+      <!-- Video Card 2 -->
+      <div class="video-card">
+        <div class="video-header">
+          <span class="task-title">Same Object</span>
+          <span class="trigger">Change the color of the salad dressing to red.</span>
+          <span class="result correct">✔</span>
+        </div>
+        <video src="static/videos/libero-goal-object-ood-yellow.mp4" controls muted></video>
+      </div>
+
+      <!-- Video Card 3 -->
+      <div class="video-card">
+        <div class="video-header">
+          <span class="task-title">Other Object</span>
+          <span class="trigger">Replace the salad dressing with alphabet soup.</span>
+          <span class="result wrong">✖</span>
+        </div>
+        <video src="static/videos/libero-goal-object-ood-other-object.mp4" controls muted></video>
+      </div>
+
+      <!-- Video Card 4 -->
+      <div class="video-card">
+        <div class="video-header">
+          <span class="task-title">Other Object</span>
+          <span class="trigger">Replace the salad dressing with alphabet soup.</span>
+          <span class="result wrong">✖</span>
+        </div>
+        <video src="static/videos/libero-goal-object-ood-other-object1.mp4" controls muted></video>
+      </div>
+
+    </div>
+    <p class="carousel-description">
+      The salad dressing on the workspace was replaced with alphabet soup.
+      The VLA still grasped it as if it were salad dressing, demonstrating that it follows a fixed action trajectory rather than understanding the object.
+      Interestingly, we occasionally observed that the model would instead grasp the BBQ sauce behind it, possibly because it is visually more similar to the original salad dressing.
+    </p>
+
+    <!-- Sub-title now below title, above video -->
+    <p class="carousel-subtitle">Is the Model Truly Understanding Tasks? The VLA can complete each task independently but fails when required to combine them.</p>
+
+    <!-- Carousel Area -->
+    <div class=".carousel-wrapper.layout-3">
+
+      <!-- Video Card 1 -->
+      <div class="video-card">
+        <div class="video-header">
+          <span class="task-title">LIBERO Original Task</span>
+          <span class="trigger">Original Task: Pick the salad dressing and place it in the basket.</span>
+          <span class="result correct">✔</span>
+        </div>
+        <video src="static/videos/libero-goal-object-ood-original.mp4" controls muted></video>
+      </div>
+
+      <!-- Video Card 2 -->
+      <div class="video-card">
+        <div class="video-header">
+          <span class="task-title">Semantic Perturbation</span>
+          <span class="trigger">Grab salad dressing and set it in basket.</span>
+          <span class="result correct">✔</span>
+        </div>
+        <video src="static/videos/libero-goal-object-ood-original.mp4" controls muted></video>
+      </div>
+
+      <!-- Video Card 3 -->
+      <div class="video-card">
+        <div class="video-header">
+          <span class="task-title">Task Change</span>
+          <span class="trigger">Pick the tomato sauce and place it in the basket.</span>
+          <span class="result wrong">✖</span>
+        </div>
+        <video src="static/videos/libero-goal-object-ood-original.mp4" controls muted></video>
+      </div>
+
+      <!-- Video Card 4 -->
+      <div class="video-card">
+        <div class="video-header">
+          <span class="task-title">Meaningless instruction</span>
+          <span class="trigger">xxx.</span>
+          <span class="result wrong">✖</span>
+        </div>
+        <video src="static/videos/libero-goal-object-ood-original.mp4" controls muted></video>
+      </div>
+
+    </div>
     </div>
 </section>
 
@@ -698,6 +799,18 @@
 .carousel-wrapper.layout-6 video {
   width: 85%;
   height: 240px;
+}
+
+/* ===== 3个视频布局：保持原有比例，不放大卡片宽度 ===== */
+.carousel-wrapper.layout-3 .video-card {
+  flex: 1 1 calc((100% - 3rem) / 3);  /* ✅ 平均分3列，间距相对4列略大 */
+  max-width: 520px;                   /* ✅ 保持与layout-4相同宽度 */
+  height: 520px;                      /* ✅ 一致高度，风格统一 */
+}
+
+.carousel-wrapper.layout-3 video {
+  width: 88%;                         /* ✅ 比例略缩，以保持视觉平衡 */
+  height: 300px;                      /* ✅ 与layout-4一致 */
 }
   
 
