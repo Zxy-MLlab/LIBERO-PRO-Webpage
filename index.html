@@ -1006,157 +1006,82 @@
 </section>
 
 <style>
-/* ====== Base Layout ====== */
+/* 全局盒模型，避免宽度计算偏差 */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ======= 基础容器 ======= */
 .video-carousel {
   background-color: #fafafa;
-  padding: 3rem 0 4rem;
+  padding: 3rem 0;
   display: flex;
   justify-content: center;
+  width: 100%;
 }
-
 .carousel-container {
-  width: 2500px;
+  width: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+  /* 不再裁切内容；留少量内边距避免紧贴边缘 */
+  padding-inline: 12px;
+}
+
+/* ======= 标题 ======= */
+.carousel-title-wrapper { text-align: center; margin-bottom: 2.5rem; }
+.carousel-title { font-size: 2.2rem; font-weight: 700; color: #222; margin-bottom: 0.5rem; }
+.carousel-title-underline { width: 120px; height: 4px; background: linear-gradient(90deg, #007BFF, #00C3FF); border-radius: 2px; margin: 0 auto; }
+.carousel-subtitle { font-size: 1.4rem; font-weight: 600; color: #333; margin: 2rem 0 1rem; text-align: center; }
+.carousel-description { width: 90%; max-width: 1400px; text-align: center; margin: 1rem auto 2.5rem; font-size: 1rem; color: #555; line-height: 1.6; }
+
+/* ======= 一行等分：4/5/6 都行；无滚动条、无裁切 ======= */
+.carousel-wrapper{
+  --gap: 1.2rem;                 /* 统一管理列间距 */
+  display: grid;
+  grid-template-columns: repeat(var(--video-count, 4), minmax(0, 1fr));
+  column-gap: var(--gap);
+  width: 100%;
+  margin: 0 auto 2.5rem;
+}
+
+/* 卡片与视频：任何内容都不会把列撑爆 */
+.video-card{
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0;                      /* 防止外部样式给它加 margin 撑宽 */
 }
-
-/* ====== Title Section ====== */
-.carousel-title-wrapper {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.carousel-title {
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: #222;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.5rem;
-}
-
-.carousel-title-underline {
-  width: 120px;
-  height: 4px;
-  margin: 0.5rem auto 1rem;
-  background: linear-gradient(90deg, #007BFF, #00C3FF);
-  border-radius: 2px;
-}
-
-.carousel-subtitle {
-  font-size: 1.1rem;
-  color: #555;
-  font-style: italic;
-  margin-top: -0.5rem; /* ✅ 让subtitle更靠近视频 */
-}
-
-/* ====== Carousel Wrapper ====== */
-.carousel-wrapper {
-  display: flex;
-  gap: 2rem;
-  overflow-x: auto;
-  padding: 1rem 2rem;
-  scroll-behavior: smooth;
-  justify-content: center;
-}
-
-/* ====== Card Styling ====== */
-.video-card {
-  flex: 0 0 440px;          
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 1.6rem 1.2rem 1.4rem; /* ✅ 减少底部padding */
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  height: 520px; /* ✅ 高度略减，让底部更紧凑 */
-}
-
-.video-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.18);
-}
-
-/* ====== Video Header ====== */
-.video-header {
-  text-align: center;
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  height: 130px; /* ✅ 稍微增高以容纳两行文字 */
-  overflow-y: auto;
-  scrollbar-width: none;
-}
-
-.video-header::-webkit-scrollbar {
-  display: none;
-}
-
-.video-header .trigger {
-  font-weight: 400;
-  color: #555;
-  max-width: 95%;
-  line-height: 1.3;
-  word-wrap: break-word;
-  white-space: normal;
-}
-
-/* 状态符号 */
-.result.correct {
-  color: #27ae60;
-  font-size: 1.6rem;
-}
-
-.result.wrong {
-  color: #e74c3c;
-  font-size: 1.6rem;
-}
-
-/* ====== Video Style ====== */
-video {
-  width: 79%;
-  height: 300px; /* ✅ 稍微放大视频高度 */
-  border-radius: 10px;
+.video-card video{
+  display: block;                 /* 去除内联元素空白 */
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 16/9;
   object-fit: cover;
+  border-radius: 10px;
+  background: #000;
 }
 
-/* ====== Scrollbar ====== */
-.carousel-wrapper::-webkit-scrollbar {
-  height: 10px;
-}
-.carousel-wrapper::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 6px;
-}
-.carousel-wrapper::-webkit-scrollbar-thumb:hover {
-  background: #999;
-}
+/* 文案样式 */
+.video-header { text-align: center; margin-bottom: 0.8rem; }
+.task-title { font-weight: 600; color: #222; display: block; }
+.trigger { display: block; font-weight: 400; color: #555; font-size: 0.95rem; margin: 0.2rem 0; }
+.result.correct { color: #27ae60; font-size: 1.4rem; }
+.result.wrong   { color: #e74c3c; font-size: 1.4rem; }
 
-/* ====== Responsive ====== */
-@media (max-width: 1600px) {
-  .carousel-container { width: 90%; }
-  .video-card { flex: 0 0 380px; height: 480px; } /* ✅ 比例同步缩小 */
-  video { height: 260px; }
+/* 响应式微调（不影响一行显示） */
+@media (max-width: 1200px){
+  .carousel-title { font-size: 1.8rem; }
+  .carousel-subtitle { font-size: 1.2rem; }
 }
-
-@media (max-width: 900px) {
-  .carousel-container { width: 95%; }
-  .video-card { flex: 0 0 300px; height: 420px; }
-  video { height: 220px; }
+@media (max-width: 800px){
+  .carousel-wrapper { --gap: .8rem; }
+  .carousel-title { font-size: 1.6rem; }
+  .video-card video { aspect-ratio: 16/10; }
 }
-
-@media (max-width: 600px) {
-  .carousel-container { width: 100%; }
-  .video-card { flex: 0 0 250px; height: 380px; }
-  video { height: 200px; }
+@media (max-width: 600px){
+  .carousel-title { font-size: 1.4rem; }
+  .video-card video { aspect-ratio: 4/3; }
 }
 </style>
-
 
 
 
