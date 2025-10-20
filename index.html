@@ -508,31 +508,35 @@
 /* ======= 视频区域核心 ======= */
 .carousel-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); /* ✅ 所有视频平分宽度 */
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); /* 平分宽度 */
   gap: 1.2rem;
   width: 100%;
   box-sizing: border-box;
   align-items: start;
   margin-bottom: 2.5rem;
+
+  /* ✅ 新增这三行，彻底消除横向滚动条 */
+  overflow-x: hidden;          /* 防止任何水平溢出 */
+  max-width: 100%;             /* 确保不超出容器 */
+  scrollbar-width: none;       /* Firefox 隐藏滚动条 */
 }
 
-/* ======= 单个视频卡片 ======= */
 .video-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  min-width: 0;  /* ✅ 防止视频内容撑开 grid 单元格 */
 }
 
-/* 视频 */
 .video-card video {
   width: 100%;
-  aspect-ratio: 16 / 9;  /* ✅ 自动等比缩放 */
+  aspect-ratio: 16 / 9;
   border-radius: 10px;
   background: #000;
   object-fit: cover;
+  min-width: 0; /* ✅ 再次确保视频自身不会撑开卡片 */
 }
-
 /* 视频标题 */
 .video-header {
   text-align: center;
