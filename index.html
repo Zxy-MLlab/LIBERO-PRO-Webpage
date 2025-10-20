@@ -1083,6 +1083,30 @@
 }
 </style>
 
+<style>
+  /* 让卡片撑满单元格，并让视频总是在文案下面 */
+  .video-card{ display:flex; flex-direction:column; height:100%; }
+  .video-header{ margin-bottom:0.8rem; min-height:var(--header-equal, auto); }
+  .video-card video{ width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:10px; }
+</style>
+
+<script>
+  // 等高函数：把同一行中 video-header 的最大高度，写成 CSS 变量 --header-equal
+  function equalizeHeaders(){
+    document.querySelectorAll('.carousel-wrapper').forEach(wrapper=>{
+      let max = 0;
+      const headers = wrapper.querySelectorAll('.video-header');
+      headers.forEach(h => { h.style.minHeight = ''; });     // 先恢复，避免上次的值影响测量
+      headers.forEach(h => { max = Math.max(max, h.offsetHeight); });
+      wrapper.style.setProperty('--header-equal', max + 'px');
+    });
+  }
+
+  // 首次、字体加载完、窗口尺寸变化时都重新等高
+  window.addEventListener('load', equalizeHeaders);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(equalizeHeaders);
+  let t; window.addEventListener('resize', ()=>{ clearTimeout(t); t=setTimeout(equalizeHeaders, 120); });
+</script>
 
 
 
