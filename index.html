@@ -367,13 +367,9 @@
       <div class="carousel-title-underline"></div>
     </div>
 
-    <!-- Sub-title now below title, above video -->
+    <!-- ========== Finding 1 ========== -->
     <p class="carousel-subtitle">Finding 1: Does the Model Generalize to New Objects?  VLA completely don't know to grasp what is object</p>
-
-    <!-- Carousel Area -->
     <div class="carousel-wrapper">
-
-      <!-- Video Card 1 -->
       <div class="video-card">
         <div class="video-header">
           <span class="task-title">LIBERO Original Task</span>
@@ -382,8 +378,6 @@
         </div>
         <video src="static/videos/libero-goal-object-ood-original.mp4" controls muted></video>
       </div>
-
-      <!-- Video Card 2 -->
       <div class="video-card">
         <div class="video-header">
           <span class="task-title">Same Object</span>
@@ -392,8 +386,6 @@
         </div>
         <video src="static/videos/libero-goal-object-ood-yellow.mp4" controls muted></video>
       </div>
-
-      <!-- Video Card 3 -->
       <div class="video-card">
         <div class="video-header">
           <span class="task-title">Other Object</span>
@@ -402,8 +394,6 @@
         </div>
         <video src="static/videos/libero-goal-object-ood-other-object.mp4" controls muted></video>
       </div>
-
-      <!-- Video Card 4 -->
       <div class="video-card">
         <div class="video-header">
           <span class="task-title">Other Object</span>
@@ -412,21 +402,15 @@
         </div>
         <video src="static/videos/libero-goal-object-ood-other-object1.mp4" controls muted></video>
       </div>
-
     </div>
+
     <p class="carousel-description">
-      The salad dressing on the workspace was replaced with alphabet soup.
-      The VLA still grasped it as if it were salad dressing, demonstrating that it follows a fixed action trajectory rather than understanding the object.
-      Interestingly, we occasionally observed that the model would instead grasp the BBQ sauce behind it, possibly because it is visually more similar to the original salad dressing.
+      The salad dressing on the workspace was replaced with alphabet soup. The VLA still grasped it as if it were salad dressing, demonstrating that it follows a fixed action trajectory rather than understanding the object.
     </p>
 
-    <!-- Sub-title now below title, above video -->
+    <!-- ========== Finding 2 ========== -->
     <p class="carousel-subtitle">Finding 2: Does the Model Generalize to Varied Instructions? VLA completely don't know what instruction</p>
-
-    <!-- Carousel Area -->
-    <div class="carousel-wrapper layout-4">
-
-      <!-- Video Card 1 -->
+    <div class="carousel-wrapper">
       <div class="video-card">
         <div class="video-header">
           <span class="task-title">LIBERO Original Task</span>
@@ -435,8 +419,6 @@
         </div>
         <video src="static/videos/libero-goal-object-ood-original.mp4" controls muted></video>
       </div>
-
-      <!-- Video Card 2 -->
       <div class="video-card">
         <div class="video-header">
           <span class="task-title">Semantic Perturbation</span>
@@ -445,8 +427,6 @@
         </div>
         <video src="static/videos/libero-goal-object-ood-original.mp4" controls muted></video>
       </div>
-
-      <!-- Video Card 3 -->
       <div class="video-card">
         <div class="video-header">
           <span class="task-title">Task Change</span>
@@ -455,8 +435,6 @@
         </div>
         <video src="static/videos/libero-goal-object-ood-original.mp4" controls muted></video>
       </div>
-
-      <!-- Video Card 4 -->
       <div class="video-card">
         <div class="video-header">
           <span class="task-title">Meaningless instruction</span>
@@ -465,299 +443,120 @@
         </div>
         <video src="static/videos/libero-goal-object-ood-original.mp4" controls muted></video>
       </div>
-
     </div>
 
-    <!-- Sub-title now below title, above video -->
+    <!-- ========== Finding 3 ========== -->
     <p class="carousel-subtitle">Finding 3: How Sensitive is the Model to Object Placement? VLA can hardly handle changes in the position of objects</p>
-
-    <!-- Carousel Area -->
-    <div class="carousel-wrapper layout-6">
-
-      <!-- Video Card 1 -->
+    <div class="carousel-wrapper">
       <div class="video-card">
-        <div class="video-header">
-          <span class="task-title">LIBERO Original Task</span>
-          <span class="trigger">Original Task: Pick the alphabet soup and place it in the basket.</span>
-          <span class="result correct">✔</span>
-        </div>
-        <video src="static/videos/position-original.mp4" controls muted></video>
-      </div>
-
-      <!-- Video Card 2 -->
-      <div class="video-card">
-        <div class="video-header">
-          <span class="task-title">Position Perturbation Task</span>
-          <span class="trigger">The alphabet soup is moved along the X-axis, and the relative position is changed by 0.1.</span>
-          <span class="result correct">✔</span>
-        </div>
-        <video src="static/videos/position-x-0-1.mp4" controls muted></video>
-      </div>
-
-      <!-- Video Card 3 -->
-      <div class="video-card">
-        <div class="video-header">
-          <span class="task-title">Position Perturbation Task</span>
-          <span class="trigger">The alphabet soup is moved along the X-axis, and the relative position is changed by 0.2.</span>
-          <span class="result wrong">✖</span>
-        </div>
-        <video src="static/videos/position-x-0-2.mp4" controls muted></video>
-      </div>
-
-      <!-- Video Card 4 -->
-      <div class="video-card">
-        <div class="video-header">
-          <span class="task-title">Position Perturbation Task</span>
-          <span class="trigger">The alphabet soup is moved along the X-axis, and the relative position is changed by 0.3.</span>
-          <span class="result wrong">✖</span>
-        </div>
-        <video src="static/videos/position-x-0-3.mp4" controls muted></video>
-      </div>
-
-      <!-- Video Card 5 -->
-      <div class="video-card">
-        <div class="video-header">
-          <span class="task-title">Position Perturbation Task</span>
-          <span class="trigger">The alphabet soup is moved along the X-axis, and the relative position is changed by 0.4.</span>
-          <span class="result wrong">✖</span>
-        </div>
-        <video src="static/videos/position-x-0-4.mp4" controls muted></video>
-      </div>
-
-      <!-- Video Card 6 -->
-      <div class="video-card">
-        <div class="video-header">
-          <span class="task-title">Position Perturbation Task</span>
-          <span class="trigger">The alphabet soup is moved along the X-axis, and the relative position is changed by 0.5.</span>
-          <span class="result wrong">✖</span>
-        </div>
-        <video src="static/videos/position-x-0-5.mp4" controls muted></video>
-      </div>
-
+        <div class="video-header"><span class="task-title">LIBERO Original Task</span>
+          <span class="trigger">Pick the alphabet soup and place it in the basket.</span><span class="result correct">✔</span></div>
+        <video src="static/videos/position-original.mp4" controls muted></video></div>
+      <div class="video-card"><div class="video-header"><span class="task-title">Position Perturbation Task</span><span class="trigger">X-axis +0.1</span><span class="result correct">✔</span></div><video src="static/videos/position-x-0-1.mp4" controls muted></video></div>
+      <div class="video-card"><div class="video-header"><span class="task-title">Position Perturbation Task</span><span class="trigger">X-axis +0.2</span><span class="result wrong">✖</span></div><video src="static/videos/position-x-0-2.mp4" controls muted></video></div>
+      <div class="video-card"><div class="video-header"><span class="task-title">Position Perturbation Task</span><span class="trigger">X-axis +0.3</span><span class="result wrong">✖</span></div><video src="static/videos/position-x-0-3.mp4" controls muted></video></div>
+      <div class="video-card"><div class="video-header"><span class="task-title">Position Perturbation Task</span><span class="trigger">X-axis +0.4</span><span class="result wrong">✖</span></div><video src="static/videos/position-x-0-4.mp4" controls muted></video></div>
+      <div class="video-card"><div class="video-header"><span class="task-title">Position Perturbation Task</span><span class="trigger">X-axis +0.5</span><span class="result wrong">✖</span></div><video src="static/videos/position-x-0-5.mp4" controls muted></video></div>
     </div>
 
-    <!-- Carousel Area -->
-    <div class="carousel-wrapper layout-6">
-
-      <!-- Video Card 1 -->
-      <div class="video-card">
-        <div class="video-header">
-          <span class="task-title">LIBERO Original Task</span>
-          <span class="trigger">Original Task: Pick the alphabet soup and place it in the basket.</span>
-          <span class="result correct">✔</span>
-        </div>
-        <video src="static/videos/position-original.mp4" controls muted></video>
-      </div>
-
-      <!-- Video Card 2 -->
-      <div class="video-card">
-        <div class="video-header">
-          <span class="task-title">Position Perturbation Task</span>
-          <span class="trigger">The alphabet soup is moved along the Y-axis, and the relative position is changed by 0.1.</span>
-          <span class="result wrong">✖</span>
-        </div>
-        <video src="static/videos/position-y-0-1.mp4" controls muted></video>
-      </div>
-
-      <!-- Video Card 3 -->
-      <div class="video-card">
-        <div class="video-header">
-          <span class="task-title">Position Perturbation Task</span>
-          <span class="trigger">The alphabet soup is moved along the Y-axis, and the relative position is changed by 0.2.</span>
-          <span class="result wrong">✖</span>
-        </div>
-        <video src="static/videos/position-y-0-2.mp4" controls muted></video>
-      </div>
-
-      <!-- Video Card 4 -->
-      <div class="video-card">
-        <div class="video-header">
-          <span class="task-title">Position Perturbation Task</span>
-          <span class="trigger">The alphabet soup is moved along the Y-axis, and the relative position is changed by 0.3.</span>
-          <span class="result wrong">✖</span>
-        </div>
-        <video src="static/videos/position-y-0-3.mp4" controls muted></video>
-      </div>
-
-      <!-- Video Card 5 -->
-      <div class="video-card">
-        <div class="video-header">
-          <span class="task-title">Position Perturbation Task</span>
-          <span class="trigger">The alphabet soup is moved along the Y-axis, and the relative position is changed by 0.4.</span>
-          <span class="result wrong">✖</span>
-        </div>
-        <video src="static/videos/position-y-0-4.mp4" controls muted></video>
-      </div>
-
-      <!-- Video Card 6 -->
-      <div class="video-card">
-        <div class="video-header">
-          <span class="task-title">Position Perturbation Task</span>
-          <span class="trigger">The alphabet soup is moved along the Y-axis, and the relative position is changed by 0.5.</span>
-          <span class="result wrong">✖</span>
-        </div>
-        <video src="static/videos/position-y-0-5.mp4" controls muted></video>
-      </div>
-
+    <div class="carousel-wrapper">
+      <div class="video-card"><div class="video-header"><span class="task-title">LIBERO Original Task</span><span class="trigger">Pick the alphabet soup and place it in the basket.</span><span class="result correct">✔</span></div><video src="static/videos/position-original.mp4" controls muted></video></div>
+      <div class="video-card"><div class="video-header"><span class="task-title">Position Perturbation Task</span><span class="trigger">Y-axis +0.1</span><span class="result wrong">✖</span></div><video src="static/videos/position-y-0-1.mp4" controls muted></video></div>
+      <div class="video-card"><div class="video-header"><span class="task-title">Position Perturbation Task</span><span class="trigger">Y-axis +0.2</span><span class="result wrong">✖</span></div><video src="static/videos/position-y-0-2.mp4" controls muted></video></div>
+      <div class="video-card"><div class="video-header"><span class="task-title">Position Perturbation Task</span><span class="trigger">Y-axis +0.3</span><span class="result wrong">✖</span></div><video src="static/videos/position-y-0-3.mp4" controls muted></video></div>
+      <div class="video-card"><div class="video-header"><span class="task-title">Position Perturbation Task</span><span class="trigger">Y-axis +0.4</span><span class="result wrong">✖</span></div><video src="static/videos/position-y-0-4.mp4" controls muted></video></div>
+      <div class="video-card"><div class="video-header"><span class="task-title">Position Perturbation Task</span><span class="trigger">Y-axis +0.5</span><span class="result wrong">✖</span></div><video src="static/videos/position-y-0-5.mp4" controls muted></video></div>
     </div>
 
-    <!-- Sub-title now below title, above video -->
-    <p class="carousel-subtitle">Finding 4: Is the Model Truly Understanding Tasks? The VLA can complete each task independently but fails when required to combine them.</p>
-
-    <!-- Carousel Area -->
-    <div class="carousel-wrapper layout-3">
-
-      <!-- Video Card 1 -->
-      <div class="video-card">
-        <div class="video-header">
-          <span class="task-title">LIBERO-GOAL Task</span>
-          <span class="trigger">Task 1: Put the bowl on top of the cabinet.</span>
-          <span class="result correct">✔</span>
-        </div>
-        <video src="static/videos/task-1.mp4" controls muted></video>
-      </div>
-
-      <!-- Video Card 2 -->
-      <div class="video-card">
-        <div class="video-header">
-          <span class="task-title">LIBERO-GOAL Task</span>
-          <span class="trigger">Task 2: Turn on the stove.</span>
-          <span class="result correct">✔</span>
-        </div>
-        <video src="static/videos/task-2.mp4" controls muted></video>
-      </div>
-
-      <!-- Video Card 3 -->
-      <div class="video-card">
-        <div class="video-header">
-          <span class="task-title">LIBERO-GOAL Task</span>
-          <span class="trigger">Task 3: Put the bowl on top of the cabinet and than turn on the stove.</span>
-          <span class="result wrong">✖</span>
-        </div>
-        <video src="static/videos/task-3.mp4" controls muted></video>
-      </div>
-
+    <!-- ========== Finding 4 ========== -->
+    <p class="carousel-subtitle">Finding 4: Is the Model Truly Understanding Tasks?</p>
+    <div class="carousel-wrapper">
+      <div class="video-card"><div class="video-header"><span class="task-title">Task 1</span><span class="trigger">Put the bowl on top of the cabinet.</span><span class="result correct">✔</span></div><video src="static/videos/task-1.mp4" controls muted></video></div>
+      <div class="video-card"><div class="video-header"><span class="task-title">Task 2</span><span class="trigger">Turn on the stove.</span><span class="result correct">✔</span></div><video src="static/videos/task-2.mp4" controls muted></video></div>
+      <div class="video-card"><div class="video-header"><span class="task-title">Combined Task</span><span class="trigger">Put the bowl on cabinet then turn on stove.</span><span class="result wrong">✖</span></div><video src="static/videos/task-3.mp4" controls muted></video></div>
     </div>
-    </div>
+
+  </div>
 </section>
 
 <style>
-/* ====== Base Layout ====== */
-.video-carousel{
-  background-color:#fafafa;
-  padding:3rem 0 4rem;
-  display:flex;
-  justify-content:center;
-  width:100%;
-  box-sizing:border-box;
+/* ======= 基础容器 ======= */
+.video-carousel {
+  background-color: #fafafa;
+  padding: 3rem 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
 }
-.carousel-container{
-  width:100%;               /* ✅ 自适应外层 */
-  max-width:1600px;         /* ✅ 可根据需要调整上限 */
-  margin:0 auto;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  box-sizing:border-box;
-}
-.carousel-description{
-  width:90%;
-  max-width:1200px;
-  text-align:center;
-  margin:0.8rem auto 2.5rem auto;
-  font-size:1.05rem;color:#444;line-height:1.6;
+.carousel-container {
+  width: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* ====== Title Section ====== */
-.carousel-title-wrapper{ text-align:center;margin-bottom:2.5rem; }
-.carousel-title{ font-size:2.4rem;font-weight:700;color:#222;letter-spacing:.5px;margin-bottom:.5rem; }
-.carousel-title-underline{ width:120px;height:4px;margin:.5rem auto 1rem;background:linear-gradient(90deg,#007BFF,#00C3FF);border-radius:2px; }
-.carousel-subtitle{
-  font-size:1.35rem;font-weight:600;color:#333;margin-top:2rem;margin-bottom:1rem;text-align:center;line-height:1.5;
+/* ======= 标题 ======= */
+.carousel-title-wrapper { text-align: center; margin-bottom: 2.5rem; }
+.carousel-title { font-size: 2.2rem; font-weight: 700; color: #222; margin-bottom: 0.5rem; }
+.carousel-title-underline { width: 120px; height: 4px; background: linear-gradient(90deg, #007BFF, #00C3FF); border-radius: 2px; margin: 0 auto; }
+.carousel-subtitle { font-size: 1.4rem; font-weight: 600; color: #333; margin: 2rem 0 1rem; text-align: center; }
+.carousel-description { width: 90%; max-width: 1400px; text-align: center; margin: 1rem auto 2.5rem; font-size: 1rem; color: #555; line-height: 1.6; }
+
+/* ======= 视频区域核心 ======= */
+.carousel-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); /* ✅ 所有视频平分宽度 */
+  gap: 1.2rem;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: start;
+  margin-bottom: 2.5rem;
 }
 
-/* ====== 通用卡片与视频样式 ====== */
-.video-card{
-  display:flex;flex-direction:column;align-items:center;
-  height:auto;box-sizing:border-box;
-}
-.video-card video{
-  width:100%;height:auto;border-radius:10px;object-fit:cover;
-}
-.video-header{
-  text-align:center;margin-bottom:1rem;display:flex;flex-direction:column;align-items:center;
-}
-.video-header .trigger{ font-weight:400;color:#555;max-width:95%;line-height:1.3;word-wrap:break-word;white-space:normal; }
-.result.correct{ color:#27ae60;font-size:1.6rem; }
-.result.wrong{ color:#e74c3c;font-size:1.6rem; }
-
-/* ====== 通用容器 ====== */
-.carousel-wrapper{
-  width:100%;
-  gap:1.5rem;
-  padding:1rem 2rem;
-  box-sizing:border-box;
-  margin-bottom:2.5rem;
+/* ======= 单个视频卡片 ======= */
+.video-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-/* ====== layout-3：固定 3 列，不换行 + 横向滚动 ====== */
-.carousel-wrapper.layout-3{
-  display:flex;
-  flex-wrap:nowrap;            /* ✅ 不换行 */
-  overflow-x:auto;             /* ✅ 横向滚动 */
-  overflow-y:hidden;
-  scroll-snap-type:x mandatory;/* 体验更顺滑（可选） */
-}
-.carousel-wrapper.layout-3 .video-card{
-  flex:0 0 calc((100% - 3rem)/3);   /* ✅ 固定三列的可视宽度 */
-  max-width:520px;                   /* 上限防止过宽 */
-  min-width:320px;                   /* 下限防止过窄（影响可滚动区宽度） */
-  scroll-snap-align:start;           /* 可选 */
+/* 视频 */
+.video-card video {
+  width: 100%;
+  aspect-ratio: 16 / 9;  /* ✅ 自动等比缩放 */
+  border-radius: 10px;
+  background: #000;
+  object-fit: cover;
 }
 
-/* ====== layout-4：默认 4 列，可换行，响应式降级 ====== */
-.carousel-wrapper.layout-4{
-  display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;
+/* 视频标题 */
+.video-header {
+  text-align: center;
+  margin-bottom: 0.8rem;
 }
-.carousel-wrapper.layout-4 .video-card{
-  flex:1 1 calc(25% - 2rem);  /* 4 列 */
-  max-width:520px;min-width:260px;
-}
-@media (max-width:1500px){
-  .carousel-wrapper.layout-4 .video-card{ flex:1 1 calc(33.333% - 2rem); } /* 3 列 */
-}
-@media (max-width:1100px){
-  .carousel-wrapper.layout-4 .video-card{ flex:1 1 calc(50% - 2rem); }     /* 2 列 */
-}
-@media (max-width:700px){
-  .carousel-wrapper.layout-4 .video-card{ flex:1 1 100%; }                  /* 1 列 */
-}
+.task-title { font-weight: 600; color: #222; display: block; }
+.trigger { display: block; font-weight: 400; color: #555; font-size: 0.95rem; margin: 0.2rem 0; }
+.result.correct { color: #27ae60; font-size: 1.4rem; }
+.result.wrong { color: #e74c3c; font-size: 1.4rem; }
 
-/* ====== layout-6：默认 6 列，可换行，响应式降级 ====== */
-.carousel-wrapper.layout-6{
-  display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;
+/* ======= 响应式优化 ======= */
+@media (max-width: 1200px) {
+  .carousel-title { font-size: 1.8rem; }
+  .carousel-subtitle { font-size: 1.2rem; }
 }
-.carousel-wrapper.layout-6 .video-card{
-  flex:1 1 calc(16.666% - 2rem);  /* 6 列 */
-  max-width:400px;min-width:220px;
+@media (max-width: 800px) {
+  .carousel-wrapper { gap: 0.8rem; }
+  .carousel-title { font-size: 1.6rem; }
+  .video-card video { aspect-ratio: 16 / 10; }
 }
-@media (max-width:1600px){
-  .carousel-wrapper.layout-6 .video-card{ flex:1 1 calc(25% - 2rem); }     /* 4 列 */
+@media (max-width: 600px) {
+  .carousel-title { font-size: 1.4rem; }
+  .video-card video { aspect-ratio: 4 / 3; }
 }
-@media (max-width:1200px){
-  .carousel-wrapper.layout-6 .video-card{ flex:1 1 calc(33.333% - 2rem); } /* 3 列 */
-}
-@media (max-width:1000px){
-  .carousel-wrapper.layout-6 .video-card{ flex:1 1 calc(50% - 2rem); }     /* 2 列 */
-}
-@media (max-width:640px){
-  .carousel-wrapper.layout-6 .video-card{ flex:1 1 100%; }                  /* 1 列 */
-}
-
-/* ====== 滚动条优化（仅横向区） ====== */
-.carousel-wrapper.layout-3::-webkit-scrollbar{ height:10px; }
-.carousel-wrapper.layout-3::-webkit-scrollbar-thumb{ background:#ccc;border-radius:6px; }
-.carousel-wrapper.layout-3::-webkit-scrollbar-thumb:hover{ background:#999; }
 </style>
 
 <!-- Research Results Carousel: Tables Version -->
