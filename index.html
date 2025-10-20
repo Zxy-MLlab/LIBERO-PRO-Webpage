@@ -480,7 +480,7 @@
 </section>
 
 <style>
-/* ===== 全局：盒模型一致，避免计算误差 ===== */
+/* 全局盒模型，避免宽度计算偏差 */
 *, *::before, *::after { box-sizing: border-box; }
 
 /* ======= 基础容器 ======= */
@@ -495,11 +495,8 @@
   width: 100%;
   max-width: 2000px;
   margin: 0 auto;
-  padding-inline: 1px;   /* 吸收极小舍入误差 */
-  overflow-x: clip;      /* 禁止横向滚动上下文 */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  /* 不再裁切内容；留少量内边距避免紧贴边缘 */
+  padding-inline: 12px;
 }
 
 /* ======= 标题 ======= */
@@ -509,32 +506,29 @@
 .carousel-subtitle { font-size: 1.4rem; font-weight: 600; color: #333; margin: 2rem 0 1rem; text-align: center; }
 .carousel-description { width: 90%; max-width: 1400px; text-align: center; margin: 1rem auto 2.5rem; font-size: 1rem; color: #555; line-height: 1.6; }
 
-/* ======= 关键：一行等分，无滚动条、无裁切 ======= */
-.carousel-wrapper {
-  --gap: 1.2rem;  /* 统一管理间距 */
+/* ======= 一行等分：4/5/6 都行；无滚动条、无裁切 ======= */
+.carousel-wrapper{
+  --gap: 1.2rem;                 /* 统一管理列间距 */
   display: grid;
-  grid-template-columns: repeat(var(--video-count, 4), minmax(0, 1fr)); /* 严格等分 N 列 */
-  gap: var(--gap);
+  grid-template-columns: repeat(var(--video-count, 4), minmax(0, 1fr));
+  column-gap: var(--gap);
   width: 100%;
-  margin-bottom: 2.5rem;
-
-  /* 处理 1px 舍入并禁止水平滚动区域生成 */
-  padding-inline: 1px;
-  overflow-x: clip;
+  margin: 0 auto 2.5rem;
 }
 
-/* 卡片与视频 */
-.video-card {
-  min-width: 0;     /* 防止内部控件把列撑破 */
+/* 卡片与视频：任何内容都不会把列撑爆 */
+.video-card{
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0;                      /* 防止外部样式给它加 margin 撑宽 */
 }
-.video-card video {
-  display: block;   /* 去除行内空隙 */
+.video-card video{
+  display: block;                 /* 去除内联元素空白 */
   width: 100%;
   min-width: 0;
-  aspect-ratio: 16 / 9;  /* 等比缩放 */
+  aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: 10px;
   background: #000;
@@ -547,19 +541,19 @@
 .result.correct { color: #27ae60; font-size: 1.4rem; }
 .result.wrong   { color: #e74c3c; font-size: 1.4rem; }
 
-/* 可选的响应式微调（不改变一行显示，仅调字重/间距/比例） */
-@media (max-width: 1200px) {
+/* 响应式微调（不影响一行显示） */
+@media (max-width: 1200px){
   .carousel-title { font-size: 1.8rem; }
   .carousel-subtitle { font-size: 1.2rem; }
 }
-@media (max-width: 800px) {
+@media (max-width: 800px){
   .carousel-wrapper { --gap: .8rem; }
   .carousel-title { font-size: 1.6rem; }
-  .video-card video { aspect-ratio: 16 / 10; }
+  .video-card video { aspect-ratio: 16/10; }
 }
-@media (max-width: 600px) {
+@media (max-width: 600px){
   .carousel-title { font-size: 1.4rem; }
-  .video-card video { aspect-ratio: 4 / 3; }
+  .video-card video { aspect-ratio: 4/3; }
 }
 </style>
 
