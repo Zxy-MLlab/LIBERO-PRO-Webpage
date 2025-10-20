@@ -369,7 +369,7 @@
 
     <!-- ========== Finding 1 ========== -->
     <p class="carousel-subtitle">Finding 1: Does the Model Generalize to New Objects?  VLA completely don't know to grasp what is object</p>
-    <div class="carousel-wrapper">
+    <div class="carousel-wrapper", style="--video-count: 4;">
       <div class="video-card">
         <div class="video-header">
           <span class="task-title">LIBERO Original Task</span>
@@ -410,7 +410,7 @@
 
     <!-- ========== Finding 2 ========== -->
     <p class="carousel-subtitle">Finding 2: Does the Model Generalize to Varied Instructions? VLA completely don't know what instruction</p>
-    <div class="carousel-wrapper">
+    <div class="carousel-wrapper", style="--video-count: 4;">
       <div class="video-card">
         <div class="video-header">
           <span class="task-title">LIBERO Original Task</span>
@@ -447,7 +447,7 @@
 
     <!-- ========== Finding 3 ========== -->
     <p class="carousel-subtitle">Finding 3: How Sensitive is the Model to Object Placement? VLA can hardly handle changes in the position of objects</p>
-    <div class="carousel-wrapper">
+    <div class="carousel-wrapper", style="--video-count: 6;">
       <div class="video-card">
         <div class="video-header"><span class="task-title">LIBERO Original Task</span>
           <span class="trigger">Pick the alphabet soup and place it in the basket.</span><span class="result correct">✔</span></div>
@@ -459,7 +459,7 @@
       <div class="video-card"><div class="video-header"><span class="task-title">Position Perturbation Task</span><span class="trigger">X-axis +0.5</span><span class="result wrong">✖</span></div><video src="static/videos/position-x-0-5.mp4" controls muted></video></div>
     </div>
 
-    <div class="carousel-wrapper">
+    <div class="carousel-wrapper", style="--video-count: 6;">
       <div class="video-card"><div class="video-header"><span class="task-title">LIBERO Original Task</span><span class="trigger">Pick the alphabet soup and place it in the basket.</span><span class="result correct">✔</span></div><video src="static/videos/position-original.mp4" controls muted></video></div>
       <div class="video-card"><div class="video-header"><span class="task-title">Position Perturbation Task</span><span class="trigger">Y-axis +0.1</span><span class="result wrong">✖</span></div><video src="static/videos/position-y-0-1.mp4" controls muted></video></div>
       <div class="video-card"><div class="video-header"><span class="task-title">Position Perturbation Task</span><span class="trigger">Y-axis +0.2</span><span class="result wrong">✖</span></div><video src="static/videos/position-y-0-2.mp4" controls muted></video></div>
@@ -470,7 +470,7 @@
 
     <!-- ========== Finding 4 ========== -->
     <p class="carousel-subtitle">Finding 4: Is the Model Truly Understanding Tasks?</p>
-    <div class="carousel-wrapper">
+    <div class="carousel-wrapper", style="--video-count: 3;">
       <div class="video-card"><div class="video-header"><span class="task-title">Task 1</span><span class="trigger">Put the bowl on top of the cabinet.</span><span class="result correct">✔</span></div><video src="static/videos/task-1.mp4" controls muted></video></div>
       <div class="video-card"><div class="video-header"><span class="task-title">Task 2</span><span class="trigger">Turn on the stove.</span><span class="result correct">✔</span></div><video src="static/videos/task-2.mp4" controls muted></video></div>
       <div class="video-card"><div class="video-header"><span class="task-title">Combined Task</span><span class="trigger">Put the bowl on cabinet then turn on stove.</span><span class="result wrong">✖</span></div><video src="static/videos/task-3.mp4" controls muted></video></div>
@@ -508,28 +508,30 @@
 /* ======= 视频区域核心 ======= */
 .carousel-wrapper {
   display: flex;
-  justify-content: space-between;  /* ✅ 平均分布 */
-  align-items: stretch;             /* ✅ 对齐行高 */
+  justify-content: space-between;
+  align-items: stretch;
   width: 100%;
-  gap: 1.2rem;
   margin-bottom: 2.5rem;
+  gap: 1.2rem;
   box-sizing: border-box;
-  overflow: hidden;                 /* ✅ 禁止溢出 */
+  overflow: hidden; /* 禁止出现滚动条 */
 }
 
 .video-card {
-  flex: 1 1 0;                      /* ✅ 每个视频卡自动平分宽度 */
-  min-width: 0;                     /* ✅ 防止内容撑开 */
+  flex: 0 0 calc((100% - (var(--video-count, 4) - 1) * 1.2rem) / var(--video-count, 4));
+  /* ↑ 自动计算每个视频宽度：总宽度减去所有间距，再平分数量 */
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .video-card video {
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9;             /* ✅ 保持比例 */
+  aspect-ratio: 16 / 9;
   border-radius: 10px;
   background: #000;
   object-fit: cover;
