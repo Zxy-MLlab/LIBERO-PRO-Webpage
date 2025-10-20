@@ -448,7 +448,10 @@
     <!-- ========== Finding 3 ========== -->
     <p class="carousel-subtitle">Finding 3: How Sensitive is the Model to Object Placement? VLA can hardly handle changes in the position of objects</p>
     <div class="carousel-wrapper" style="--video-count: 6;">
-      <div class="video-card"><div class="video-header"><span class="task-title">LIBERO Original Task</span><span class="trigger">Pick the alphabet soup and place it in the basket.</span><span class="result correct">✔</span></div><video src="static/videos/position-original.mp4" controls muted></video></div>
+      <div class="video-card">
+        <div class="video-header"><span class="task-title">LIBERO Original Task</span>
+          <span class="trigger">Pick the alphabet soup and place it in the basket.</span><span class="result correct">✔</span></div>
+        <video src="static/videos/position-original.mp4" controls muted></video></div>
       <div class="video-card"><div class="video-header"><span class="task-title">Position Perturbation Task</span><span class="trigger">X-axis +0.1</span><span class="result correct">✔</span></div><video src="static/videos/position-x-0-1.mp4" controls muted></video></div>
       <div class="video-card"><div class="video-header"><span class="task-title">Position Perturbation Task</span><span class="trigger">X-axis +0.2</span><span class="result wrong">✖</span></div><video src="static/videos/position-x-0-2.mp4" controls muted></video></div>
       <div class="video-card"><div class="video-header"><span class="task-title">Position Perturbation Task</span><span class="trigger">X-axis +0.3</span><span class="result wrong">✖</span></div><video src="static/videos/position-x-0-3.mp4" controls muted></video></div>
@@ -477,6 +480,9 @@
 </section>
 
 <style>
+/* ===== 全局：盒模型一致，避免计算误差 ===== */
+*, *::before, *::after { box-sizing: border-box; }
+
 /* ======= 基础容器 ======= */
 .video-carousel {
   background-color: #fafafa;
@@ -484,16 +490,16 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  box-sizing: border-box;
 }
 .carousel-container {
   width: 100%;
   max-width: 2000px;
   margin: 0 auto;
+  padding-inline: 1px;   /* 吸收极小舍入误差 */
+  overflow-x: clip;      /* 禁止横向滚动上下文 */
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 1rem; /* 增加左右内边距，避免窄屏时视频贴边 */
 }
 
 /* ======= 标题 ======= */
@@ -503,63 +509,57 @@
 .carousel-subtitle { font-size: 1.4rem; font-weight: 600; color: #333; margin: 2rem 0 1rem; text-align: center; }
 .carousel-description { width: 90%; max-width: 1400px; text-align: center; margin: 1rem auto 2.5rem; font-size: 1rem; color: #555; line-height: 1.6; }
 
-/* ======= 视频区域核心（关键修复） ======= */
+/* ======= 关键：一行等分，无滚动条、无裁切 ======= */
 .carousel-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
+  --gap: 1.2rem;  /* 统一管理间距 */
+  display: grid;
+  grid-template-columns: repeat(var(--video-count, 4), minmax(0, 1fr)); /* 严格等分 N 列 */
+  gap: var(--gap);
   width: 100%;
   margin-bottom: 2.5rem;
-  gap: 1.2rem;
-  box-sizing: border-box;
-  flex-wrap: nowrap; /* 强制不换行，确保一行显示 */
+
+  /* 处理 1px 舍入并禁止水平滚动区域生成 */
+  padding-inline: 1px;
+  overflow-x: clip;
 }
 
+/* 卡片与视频 */
 .video-card {
-  /* 按视频数量自动计算宽度，减去间距后平分 */
-  flex: 0 0 calc((100% - (var(--video-count, 4) - 1) * 1.2rem) / var(--video-count, 4));
-  min-width: 0; /* 取消最小宽度限制，确保宽度计算生效 */
+  min-width: 0;     /* 防止内部控件把列撑破 */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  box-sizing: border-box;
 }
-
 .video-card video {
+  display: block;   /* 去除行内空隙 */
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9; /* 固定视频比例，保持画面正常 */
+  min-width: 0;
+  aspect-ratio: 16 / 9;  /* 等比缩放 */
+  object-fit: cover;
   border-radius: 10px;
   background: #000;
-  object-fit: cover;
 }
-  
-/* 视频标题 */
-.video-header {
-  text-align: center;
-  margin-bottom: 0.8rem;
-  width: 100%; /* 标题宽度跟随卡片，避免文字溢出 */
-}
+
+/* 文案样式 */
+.video-header { text-align: center; margin-bottom: 0.8rem; }
 .task-title { font-weight: 600; color: #222; display: block; }
 .trigger { display: block; font-weight: 400; color: #555; font-size: 0.95rem; margin: 0.2rem 0; }
 .result.correct { color: #27ae60; font-size: 1.4rem; }
-.result.wrong { color: #e74c3c; font-size: 1.4rem; }
+.result.wrong   { color: #e74c3c; font-size: 1.4rem; }
 
-/* ======= 响应式优化（补充适配） ======= */
+/* 可选的响应式微调（不改变一行显示，仅调字重/间距/比例） */
 @media (max-width: 1200px) {
   .carousel-title { font-size: 1.8rem; }
   .carousel-subtitle { font-size: 1.2rem; }
-  .carousel-wrapper { gap: 1rem; } /* 中等屏幕减小间距，避免视频过窄 */
 }
 @media (max-width: 800px) {
-  .carousel-wrapper { gap: 0.8rem; }
+  .carousel-wrapper { --gap: .8rem; }
   .carousel-title { font-size: 1.6rem; }
-  .trigger { font-size: 0.85rem; } /* 小屏幕缩小标题文字，避免换行 */
+  .video-card video { aspect-ratio: 16 / 10; }
 }
 @media (max-width: 600px) {
   .carousel-title { font-size: 1.4rem; }
-  .carousel-wrapper { gap: 0.5rem; } /* 窄屏进一步减小间距 */
+  .video-card video { aspect-ratio: 4 / 3; }
 }
 </style>
 
