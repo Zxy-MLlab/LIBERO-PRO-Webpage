@@ -648,26 +648,30 @@
   padding: 3rem 0 4rem;
   display: flex;
   justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .carousel-container {
-  width: 2500px;
+  width: 100%;
+  max-width: 2000px; /* ✅ 最大宽度限制 */
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 
-  .carousel-description {
-  width: calc(100% - 4rem);
-  max-width: 2000px;
+.carousel-description {
+  width: 90%;
+  max-width: 1200px;
   text-align: center;
-  margin: 0.5rem auto 2.5rem auto;  /* ✅ 上边距改为 0.8rem，让文字更贴近上方视频 */
+  margin: 0.8rem auto 2.5rem auto;
   font-size: 1.05rem;
   color: #444;
   line-height: 1.6;
   font-style: normal;
 }
-
 
 /* ====== Title Section ====== */
 .carousel-title-wrapper {
@@ -692,87 +696,56 @@
 }
 
 .carousel-subtitle {
-  font-size: 1.35rem;       /* ✅ 放大字体 */
-  font-weight: 600;         /* ✅ 加粗（500为中等，600略重） */
-  color: #333;              /* ✅ 稍深一点，提高对比度 */
-  font-style: normal;       /* ✅ 去掉斜体，更利于阅读 */
-  margin-top: 2rem;         /* ✅ 保留与上方段落的间距 */
-  margin-bottom: 1rem;      /* ✅ 保证下方元素有呼吸空间 */
-  text-align: center;       /* ✅ 居中 */
-  line-height: 1.5;         /* ✅ 行距稍微舒适 */
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  line-height: 1.5;
 }
-
 
 /* ====== Carousel Wrapper ====== */
 .carousel-wrapper {
   display: flex;
+  flex-wrap: wrap; /* ✅ 自动换行 */
   justify-content: center;
   align-items: flex-start;
   gap: 1.5rem;
   padding: 1rem 2rem;
-  flex-wrap: nowrap;
-  overflow: hidden;
-  margin-top: 0.5rem;   /* ✅ 增加与上方小标题之间的间距 */
+  width: 100%;
+  box-sizing: border-box;
   margin-bottom: 2.5rem;
 }
-  
-/* 4个视频布局：更宽、更高 */
-.carousel-wrapper.layout-4 .video-card {
-  flex: 1 1 calc((100% - 4.5rem) / 4); /* ✅ 4列 */
-  max-width: 520px;
-  height: 520px;
-}
-.carousel-wrapper.layout-4 video {
-  width: 90%;
-  height: 300px;
+
+/* 通用视频卡片布局 */
+.video-card {
+  flex: 1 1 320px;
+  max-width: 420px;
+  min-width: 280px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* 6个视频布局：自动缩小 */
-.carousel-wrapper.layout-6 .video-card {
-  flex: 1 1 calc((100% - 7.5rem) / 6); /* ✅ 6列 */
-  max-width: 400px;
-  height: 460px;
-}
-.carousel-wrapper.layout-6 video {
-  width: 85%;
-  height: 240px;
+/* 视频样式 */
+.video-card video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
-.carousel-wrapper.layout-3 {
-  flex-wrap: nowrap;      /* ✅ 不换行 */
-  overflow-x: auto;       /* ✅ 允许横向滚动，防止被挤下去 */
-  overflow-y: hidden;
-  justify-content: center;
-}
-  
-/* ===== 3个视频布局：保持原有比例，不放大卡片宽度 ===== */
-.carousel-wrapper.layout-3 .video-card {
-  flex: 1 1 calc((100% - 3rem) / 3);  /* ✅ 平均分3列，间距相对4列略大 */
-  max-width: 520px;                   /* ✅ 保持与layout-4相同宽度 */
-  height: 520px;                      /* ✅ 一致高度，风格统一 */
-}
-
-.carousel-wrapper.layout-3 video {
-  width: 88%;                         /* ✅ 比例略缩，以保持视觉平衡 */
-  height: 300px;                      /* ✅ 与layout-4一致 */
-}
-  
-
-/* ====== Video Header ====== */
+/* 视频头部 */
 .video-header {
   text-align: center;
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  height: 130px; /* ✅ 稍微增高以容纳两行文字 */
-  overflow-y: auto;
-  scrollbar-width: none;
-}
-
-.video-header::-webkit-scrollbar {
-  display: none;
+  height: auto;
+  overflow: hidden;
 }
 
 .video-header .trigger {
@@ -789,52 +762,31 @@
   color: #27ae60;
   font-size: 1.6rem;
 }
-
 .result.wrong {
   color: #e74c3c;
   font-size: 1.6rem;
 }
 
-/* ====== Video Style ====== */
-video {
-  width: 79%;
-  height: 300px; /* ✅ 稍微放大视频高度 */
-  border-radius: 10px;
-  object-fit: cover;
-}
+/* ====== 布局适配 ====== */
+.carousel-wrapper.layout-3 .video-card { flex: 1 1 calc(33.333% - 2rem); }
+.carousel-wrapper.layout-4 .video-card { flex: 1 1 calc(25% - 2rem); }
+.carousel-wrapper.layout-6 .video-card { flex: 1 1 calc(16.66% - 2rem); }
 
-/* ====== Scrollbar ====== */
-.carousel-wrapper::-webkit-scrollbar {
-  height: 10px;
-}
-.carousel-wrapper::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 6px;
-}
-.carousel-wrapper::-webkit-scrollbar-thumb:hover {
-  background: #999;
-}
-
-/* ====== Responsive ====== */
 @media (max-width: 1600px) {
-  .carousel-container { width: 90%; }
-  .video-card { flex: 0 0 380px; height: 480px; } /* ✅ 比例同步缩小 */
-  video { height: 260px; }
+  .carousel-wrapper.layout-6 .video-card { flex: 1 1 calc(25% - 2rem); }
 }
 
-@media (max-width: 900px) {
-  .carousel-container { width: 95%; }
-  .video-card { flex: 0 0 300px; height: 420px; }
-  video { height: 220px; }
+@media (max-width: 1000px) {
+  .carousel-wrapper.layout-6 .video-card,
+  .carousel-wrapper.layout-4 .video-card { flex: 1 1 calc(50% - 2rem); }
 }
 
-@media (max-width: 600px) {
-  .carousel-container { width: 100%; }
-  .video-card { flex: 0 0 250px; height: 380px; }
-  video { height: 200px; }
+@media (max-width: 700px) {
+  .carousel-wrapper.layout-6 .video-card,
+  .carousel-wrapper.layout-4 .video-card,
+  .carousel-wrapper.layout-3 .video-card { flex: 1 1 100%; }
 }
 </style>
-
 
 <!-- Research Results Carousel: Tables Version -->
 <section class="hero is-small">
