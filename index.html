@@ -493,10 +493,10 @@
 }
 .carousel-container {
   width: 100%;
-  max-width: 2000px;
+  max-width: 1600px;
   margin: 0 auto;
   /* 不再裁切内容；留少量内边距避免紧贴边缘 */
-  padding-inline: 12px;
+  padding-inline: clamp(48px, 6vw, 128px) /* 左右内边距更大 */;
 }
 
 /* ======= 标题 ======= */
@@ -1019,10 +1019,10 @@
 }
 .carousel-container {
   width: 100%;
-  max-width: 2000px;
+  max-width: 1600px;
   margin: 0 auto;
   /* 不再裁切内容；留少量内边距避免紧贴边缘 */
-  padding-inline: 12px;
+  padding-inline: clamp(48px, 6vw, 128px) /* 左右内边距更大 */;
 }
 
 /* ======= 标题 ======= */
